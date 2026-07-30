@@ -1,0 +1,41 @@
+Task 4 — Dijkstra's Algorithm Trace
+
+Граф дорог:
+Glasgow — Stirling: 50
+Glasgow — Edinburgh: 70
+Stirling — Perth: 40
+Stirling — Edinburgh: 50
+Edinburgh — Perth: 100
+Perth — Dundee: 60
+
+Цель: найти кратчайший путь от Edinburgh до Dundee.
+
+Шаг 0: Инициализация
+dist[Edinburgh] = 0
+dist[all others] = infinity
+
+Шаг 1: Посещаем Edinburgh (dist = 0). Обновляем соседей:
+dist[Stirling] = 50 (via Edinburgh)
+dist[Glasgow] = 70 (via Edinburgh)
+dist[Perth] = 100 (via Edinburgh)
+
+Шаг 2: Выбираем ближайшую непосещённую вершину — Stirling (dist = 50).
+Stirling -> Glasgow: 50 + 50 = 100 (хуже текущих 70, не обновляем)
+Stirling -> Perth: 50 + 40 = 90 (лучше текущих 100, обновляем)
+dist[Perth] = 90
+
+Шаг 3: Выбираем ближайшую непосещённую — Glasgow (dist = 70).
+Все соседи Glasgow (Stirling, Edinburgh) уже посещены — обновлений нет.
+
+Шаг 4: Выбираем ближайшую непосещённую — Perth (dist = 90).
+Perth -> Dundee: 90 + 60 = 150
+dist[Dundee] = 150
+
+Шаг 5: Посещаем Dundee (dist = 150) — конечная вершина, алгоритм завершён.
+
+Итоговый кратчайший путь:
+Edinburgh → Stirling → Perth → Dundee
+Общий вес: 50 + 40 + 60 = 150
+
+(Альтернативный прямой путь Edinburgh → Perth → Dundee весит 100 + 60 = 160
+— он длиннее, поэтому не выбран)

@@ -1,0 +1,41 @@
+Task 1 — DFS Trace
+
+Граф:
+A: C B D
+B: A C E G
+C: A B D
+D: C A
+E: G F B
+F: G E
+G: F B
+
+DFS начинается с A, идём по первому непосещённому соседу в списке смежности,
+рекурсивно вглубь, и возвращаемся (backtrack), когда все соседи посещены.
+
+Трассировка:
+
+visit A
+  A's neighbors: C, B, D
+  visit C (first unvisited neighbor of A)
+    C's neighbors: A, B, D
+    A already visited
+    visit B (first unvisited neighbor of C)
+      B's neighbors: A, C, E, G
+      A, C already visited
+      visit E (first unvisited neighbor of B)
+        E's neighbors: G, F, B
+        visit G (first unvisited neighbor of E)
+          G's neighbors: F, B
+          visit F (first unvisited neighbor of G)
+            F's neighbors: G, E
+            G, E already visited — backtrack
+          B already visited — backtrack from G
+        B already visited — backtrack from E
+      B has no more unvisited neighbors — backtrack
+    visit D (next unvisited neighbor of C)
+      D's neighbors: C, A
+      both already visited — backtrack
+    C has no more unvisited neighbors — backtrack
+  A has no more unvisited neighbors — done
+
+Итоговый порядок DFS: A → C → B → E → G → F → D

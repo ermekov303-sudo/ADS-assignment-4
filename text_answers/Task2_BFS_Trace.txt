@@ -1,0 +1,28 @@
+Task 2 — BFS Trace
+
+BFS использует очередь (queue), посещает всех соседей текущего узла
+перед переходом на следующий уровень.
+
+Queue: [A]
+Dequeue A -> visit A's neighbors: C, B, D (add all unvisited to queue)
+Queue: [C, B, D]
+
+Dequeue C -> visit C's neighbors: A, B, D (all already visited or in queue)
+Queue: [B, D]
+
+Dequeue B -> visit B's neighbors: A, C, E, G (add E, G - unvisited)
+Queue: [D, E, G]
+
+Dequeue D -> visit D's neighbors: C, A (all already visited)
+Queue: [E, G]
+
+Dequeue E -> visit E's neighbors: G, F, B (add F - unvisited)
+Queue: [G, F]
+
+Dequeue G -> visit G's neighbors: F, B (F already in queue)
+Queue: [F]
+
+Dequeue F -> visit F's neighbors: G, E (all already visited)
+Queue: [] - done
+
+Итоговый порядок BFS: A → C → B → D → E → G → F
